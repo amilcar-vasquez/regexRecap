@@ -1,0 +1,82 @@
+
+body { 
+  background: #000; 
+  color: #e6fffb; 
+}
+
+/* Ensure the Reveal container uses full viewport height so percentage
+   heights on inner slides resolve predictably. */
+.reveal, .reveal .slides {
+  height: 100vh;
+}
+
+code, pre { 
+  font-family: 'Inconsolata', Consolas, monospace; 
+  font-size: 1.05em; 
+}
+
+pre code { 
+  background: #0b0b0b; 
+  color: #b8ffb8; 
+  padding: 1em; 
+  border-radius: 8px; 
+  display: block; 
+  position: relative; 
+}
+
+h1, h2, h3 { 
+  color: #00ffff; 
+}
+
+.task { 
+  color: #ffb86b; 
+  font-weight: bold; 
+}
+
+table { 
+  border-collapse: collapse; 
+  margin-top: 0.5em; 
+}
+
+table td { 
+  padding: 6px 12px; 
+  vertical-align: top; 
+}
+
+.terminal::before {
+  content: "$ ";
+  color: #0f0;
+  font-weight: bold;
+}
+
+.regex-pattern { 
+  color: #ff79c6; 
+  font-weight: bold; 
+}
+
+.hljs-regexp { 
+  color: #50fa7b !important; 
+}
+
+.hljs-string { 
+  color: #f1fa8c !important; 
+}
+
+.hljs-comment { 
+  color: #6272a4 !important; 
+  font-style: italic; 
+}
+
+/* Make specific Reveal slides scrollable when their content exceeds the
+   available vertical space. Apply by adding class="scrollable" to a
+   <section> element. */
+.reveal .slides section.scrollable {
+  /* Use percent-based max-height so adjustments are easier. */
+  max-height: 90%;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 1rem 1.25rem 1rem 1rem;
+  -webkit-overflow-scrolling: touch; /* smoother scrolling on touch devices */
+}
+
+.reveal .slides section.scrollable table { margin-bottom: 0.5rem; }

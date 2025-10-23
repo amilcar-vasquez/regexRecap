@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Regular Expressions 1 - Reveal.js Slides</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/black.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <section data-transition="slide">
+        <h1>Regular Expressions 1</h1>
+        <p>Patterns in Text</p>
+        <p>Learn to search, match, and edit text using regex in <code>grep</code> and <code>sed</code>.</p>
+      </section>
+
+      <section data-transition="zoom">
+        <h2>Basic Commands with grep</h2>
+        <pre><code class="language-bash terminal">grep -n "word" file.txt     # Show line numbers
+grep -c "word" file.txt     # Count matches
+grep -v "word" file.txt     # Invert match
+grep -P "pattern" file.txt  # Perl regex features</code></pre>
+        <p class="task">🧠 Try It:</p>
+        <ul>
+          <li>Find lines containing "hello"</li>
+          <li>Count lines not containing "test"</li>
+          <li>Show line numbers for all "error" messages</li>
+        </ul>
+      </section>
+
+      <section data-transition="convex">
+        <h2>Using sed – Stream Editing</h2>
+        <pre><code class="language-bash terminal">sed 's/old/new/' file.txt      # Replace first match per line
+sed 's/old/new/g' file.txt     # Replace all matches
+sed -i 's/old/new/g' file.txt  # Edit file directly</code></pre>
+        <p class="task">🧠 Try It:</p>
+        <ul>
+          <li>Replace "zero" with "0"</li>
+          <li>Change all "cat" → "dog" globally</li>
+          <li>Use <code>-i</code> to modify the file permanently</li>
+        </ul>
+      </section>
+
+      <section data-transition="fade">
+        <h2>Regex Fundamentals</h2>
+        <table>
+          <tr><td><code>.</code></td><td>Any single character</td></tr>
+          <tr><td><code>^</code></td><td>Beginning of a line</td></tr>
+          <tr><td><code>$</code></td><td>End of a line</td></tr>
+          <tr><td><code>*</code></td><td>0 or more occurrences</td></tr>
+          <tr><td><code>+</code></td><td>1 or more occurrences</td></tr>
+          <tr><td><code>?</code></td><td>0 or 1 occurrence</td></tr>
+          <tr><td><code>|</code></td><td>OR</td></tr>
+          <tr><td><code>()</code></td><td>Grouping</td></tr>
+        </table>
+        <p class="task">🧠 Try It:</p>
+        <ul>
+          <li>Match <span class="regex-pattern">cat</span> or <span class="regex-pattern">dog</span></li>
+          <li>Match lines starting with <span class="regex-pattern">A</span></li>
+          <li>Match words ending with <span class="regex-pattern">ing</span></li>
+        </ul>
+      </section>
+
+      <section data-transition="slide" class="scrollable">
+        <h2>Character Classes</h2>
+        <table>
+          <tr><td><code>[abc]</code></td><td>a, b, or c</td></tr>
+          <tr><td><code>[a-z]</code></td><td>lowercase letters</td></tr>
+          <tr><td><code>[A-Z]</code></td><td>uppercase letters</td></tr>
+          <tr><td><code>[0-9]</code></td><td>digits</td></tr>
+          <tr><td><code>[^0-9]</code></td><td>non-digits</td></tr>
+        </table>
+        <p class="task">🧠 Try It:</p>
+        <ul>
+          <li>Letter followed by digit: <code>[A-Za-z][0-9]</code></li>
+          <li>3 digits in a row: <code>[0-9]{3}</code></li>
+          <li>Non-letter at start: <code>^[^A-Za-z]</code></li>
+        </ul>
+      </section>
+
+      <section data-transition="convex">
+        <h2>POSIX Character Classes</h2>
+        <pre><code class="language-bash terminal">grep '[[:digit:]]' file.txt
+grep '[^[:alpha:]]' file.txt
+grep '^[[:upper:]]' file.txt</code></pre>
+        <p><strong>Tip:</strong> These are portable across systems and useful in shell scripts.</p>
+      </section>
+
+      <section data-transition="zoom" class="scrollable">
+        <h2>Perl-Compatible Shortcuts</h2>
+        <table>
+          <tr><td><code>\d</code></td><td>Digit</td></tr>
+          <tr><td><code>\D</code></td><td>Non-digit</td></tr>
+          <tr><td><code>\w</code></td><td>Word character</td></tr>
+          <tr><td><code>\W</code></td><td>Non-word character</td></tr>
+          <tr><td><code>\s</code></td><td>Whitespace</td></tr>
+          <tr><td><code>\S</code></td><td>Non-whitespace</td></tr>
+        </table>
+        <p class="task">🧠 Try It:</p>
+        <ul>
+          <li>Three digits in a row: <code>\d{3}</code></li>
+          <li>Line ending with a digit: <code>\d$</code></li>
+          <li>Line without words: <code>^\W+$</code></li>
+        </ul>
+      </section>
+
+      <section data-transition="fade">
+        <h2>Practice Section</h2>
+        <p>Use this <a href="practice.txt" target="_blank">dummy text file</a> for practice.</p>
+        <ul>
+          <li>Lines that start with a capital letter</li>
+          <li>Lines ending with a period</li>
+          <li>Lines with three numbers separated by spaces</li>
+          <li>Lines without any digits</li>
+          <li>Replace 'error' with 'warning' globally in a file</li>
+          <li>Find phone numbers like 123-456-789 or 123.456.789</li>
+          <li>Match email-like strings: <code>\w+@\w+\.\w+</code></li>
+        </ul>
+      </section>
+
+      <section data-transition="slide">
+        <h2>Recap & Takeaways</h2>
+        <ul>
+          <li>✅ Use <code>grep -P</code> for modern regex syntax</li>
+          <li>✅ Escape special characters like <code>.</code> or <code>*</code></li>
+          <li>✅ Anchors <code>^</code> and <code>$</code> define start/end of line</li>
+          <li>✅ Combine with <code>sed</code> for edits</li>
+          <li>✅ Test regex on <a href="https://regex101.com" target="_blank">regex101.com</a></li>
+        </ul>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/highlight.min.js"></script>
+
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: true,
+      progress: true,
+      transition: 'slide',
+      plugins: [ RevealHighlight ]
+    });
+
+    if (typeof hljs !== 'undefined') {
+      hljs.highlightAll();
+    }
+  </script>
+</body>
+</html>

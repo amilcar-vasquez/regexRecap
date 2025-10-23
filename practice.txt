@@ -1,0 +1,7 @@
+Alice went to the market.
+The quick brown fox jumps over 13 lazy dogs.
+My phone number is 123-456-789
+Contact: john.doe@example.com
+There are no digits here
+Error: something went wrong
+123 456 789
